@@ -42,7 +42,7 @@ pipeline {
                 sh ''' 
                  chmod +x changeTag.sh
                  ./changeTag.sh $BUILD_NUMBER
-                 kubectl apply -f  train-schedule-kube.yml
+                 kubectl apply -f  train-schedule-kube-deployment.yml
                 '''
                 //implement Kubernetes deployment here
                 
