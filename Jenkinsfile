@@ -40,6 +40,8 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 sh ''' 
+                 chmod +x changeTag.sh
+                 ./changeTag.sh $BUILD_NUMBER
                  kubectl apply -f  train-schedule-kube.yml
                 '''
                 //implement Kubernetes deployment here
