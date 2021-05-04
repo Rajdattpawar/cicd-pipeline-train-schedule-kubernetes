@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: train-schedule
-        image:jenkinsmeetup/train-ap:latest
+        image: jenkinsmeetup/train-ap:latest
         ports:
         - containerPort: 8080
 
