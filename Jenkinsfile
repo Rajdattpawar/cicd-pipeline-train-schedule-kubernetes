@@ -27,7 +27,7 @@ pipeline {
             
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_ltrain-schedule-kube.ymlogin') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
@@ -39,11 +39,9 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                sh ''' 
+                 kubectl apply -f  train-schedule-kube.yml
+                '''
                 //implement Kubernetes deployment here
                 
             }
