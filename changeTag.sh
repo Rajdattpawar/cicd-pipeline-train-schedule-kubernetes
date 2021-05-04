@@ -1,1 +1,1 @@
-sed "s/tagVersion/$1/g" train-schedule-kube.yml > train-schedule-kube.yml 
+sed "s/tagVersion/$1/g" train-schedule-kube.yml > train-schedule-kube-deployment.yml
