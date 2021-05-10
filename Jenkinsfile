@@ -42,8 +42,8 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: 'github_cred', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                    sh("git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Rajdattpawar/argocd-demo-deploy.git")
                    sh "cd argocd-demo-deploy/prod && /var/lib/jenkins/kustomize edit set image jenkinsmeetup/train-app:${env.BUILD_NUMBER}"
-                   sh "git commit -am 'Publish new version' && git push  https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Rajdattpawar/argocd-demo-deploy.git || echo 'no changes'"
-                   //sh 'cd ../../ && rm -rf argocd-demo-deploy'
+                   sh "cd argocd-demo-deploy/prod && git commit -am 'Publish new version' && git push  https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Rajdattpawar/argocd-demo-deploy.git || echo 'no changes'"
+                   sh 'rm -rf argocd-demo-deploy'
                   }
                 //implement Kubernetes deployment here
                 
