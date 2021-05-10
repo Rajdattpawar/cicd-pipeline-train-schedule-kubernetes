@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers{
+      pollSCM('* * * * *')
+    }
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "jenkinsmeetup/train-app"
